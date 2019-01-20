@@ -1,0 +1,15 @@
+{application, systemd_notify,
+ [{description, "Notify systemd service manager about service status changes"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {maintainers, ["Jake Morrison"]}
+  ,{licenses, ["MIT"]}
+  ,{links, [{"Github", "https://github.com/cogini/systemd_notify"}]}
+ ]}.
