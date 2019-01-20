@@ -1,3 +1,10 @@
+%%%-----------------------------------------------------------------------------
+%%% @copyright (C) 2019, Cogini
+%%% @doc gen_server to handle sending watchdog messages.
+%%%
+%%% @author Jake Morrison
+%%% @end
+%%%-----------------------------------------------------------------------------
 -module(systemd_notify_watchdog).
 
 -behaviour(gen_server).
