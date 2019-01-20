@@ -15,9 +15,15 @@
 start_link(Args) ->
     gen_server:start_link({local, ?MODULE}, ?MODULE, [], [Args]).
 
-init([Interval]) ->
-  erlang:send_after(Interval, self(), watchdog),
-  {ok, Interval}.
+init([]) ->
+    case os:getenv("WATCHDOG_USEC") of
+        false ->
+            {stop, ignore};
+        Value ->
+            Interval = trunc(erlang:list_to_integer(Value) / 1000 / 2),
+            erlang:send_after(Interval, self(), watchdog),
+            {ok, Interval}
+    end.
 
 handle_info(watchdog, Interval) ->
   systemd_notify:send(<<"WATCHDOG=1">>),
