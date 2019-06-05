@@ -67,8 +67,6 @@ as the `fork()` command completes. With `Type=exec`, systemd waits until
 the `exec()` command completes successfully, i.e. checking that your service
 actually started up.
 
-Elixir Distillery 2.0
-
     [Service]
     Type=simple
     User=foo
@@ -84,7 +82,7 @@ Elixir Distillery 2.0
 
 #### `Type=notify`
 
-Using systemd dependency tracking
+Using systemd dependency tracking:
 
 Behavior of `notify` is similar to `exec`; however, it is expected that the service
 sends a notification message when it has finished starting up.
@@ -120,7 +118,7 @@ systemd_notify:send(<<"STOPPING=1">>),
 
 #### Type=forking
 
-If set to forking, it is expected that the process configured with ExecStart=
+If set to forking, it is expected that the process configured with `ExecStart=`
 will call `fork()` as part of its start-up. The parent process is expected to
 exit when start-up is complete and all communication channels are set up. The
 child continues to run as the main service process, and the service manager
